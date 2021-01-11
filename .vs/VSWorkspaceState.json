@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\layouts",
+    "\\resources\\views\\vendor",
+    "\\resources\\views\\vendor\\adminlte",
+    "\\resources\\views\\vendor\\adminlte\\partials",
+    "\\resources\\views\\vendor\\adminlte\\partials\\common",
+    "\\resources\\views\\vendor\\adminlte\\partials\\sidebar",
+    "\\routes"
+  ],
+  "SelectedNode": "\\resources\\views\\vendor\\adminlte\\master.blade.php",
+  "PreviewInSolutionExplorer": false
+}

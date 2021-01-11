@@ -15,6 +15,7 @@ class CreateImotiTable extends Migration
     {
         Schema::create('imoti', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 50)->nullable();
             $table->string('text')->nullable();
             $table->string('status')->default('Чернова');
             $table->string('address')->nullable();
@@ -35,6 +36,7 @@ class CreateImotiTable extends Migration
             $table->tinyInteger('agent_id')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**

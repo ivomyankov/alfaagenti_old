@@ -19,6 +19,14 @@ class ImotiModel extends Model
     /**
          * Get the comments for the blog post.
     */
+
+     public function imot($id)
+    {
+        
+        $imot = ImotiModel::find($id);
+        return $imot;
+    }
+
     public function agentsImoti($id=0)
     {
         

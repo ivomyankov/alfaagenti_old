@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard/imoti', 'App\Http\Controllers\ImotiController@count')->name('dash-imoti');
+Route::get('/dashboard/imot/{id}', 'App\Http\Controllers\ImotiController@imot')->name('dash-imot');
 Route::get('/dashboard/{id}/imoti', 'App\Http\Controllers\ImotiController@agentsImoti')->name('dash-agents-imoti');
 
 Route::get('/dashboard', function () {

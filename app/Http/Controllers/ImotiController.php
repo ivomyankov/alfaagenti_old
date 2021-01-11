@@ -25,4 +25,11 @@ class ImotiController extends Controller
 
         dd($imoti->agentsImoti($id));
     }
+
+    public function imot($id)
+    {
+        $imot = new ImotiModel;
+
+        dd($imot->imot($id));
+    }
 }

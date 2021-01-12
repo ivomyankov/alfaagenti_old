@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Imoti;
+use App\Models\ImotiModel;
 
 class ImotiSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class ImotiSeeder extends Seeder
     public function run()
     {
         for($i=1;$i<51;$i++){
-            Imoti::create([
+            ImotiModel::create([
                 'title' => 'Имот '.$i,
                 'text' => "text $i",
                 'price' => $i,

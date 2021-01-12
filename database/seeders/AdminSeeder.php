@@ -18,7 +18,7 @@ class AdminSeeder extends Seeder
             'name' => 'Ivo Myankov',
             'role' => 'admin',
             'email' => 'ivomyankov@gmail.com',
-            'password' => bcrypt('adminP@ss'),
+            'password' => bcrypt('adminpass'),
         ]);
     }
 }

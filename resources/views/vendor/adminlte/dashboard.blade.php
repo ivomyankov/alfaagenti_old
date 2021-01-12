@@ -8,6 +8,12 @@
 
 @section('content')
     <!-- Main content -->
+    @foreach ($imoti as $imot)
+            <p>This is imot ID:{{ $imot['id'] }} {{ $imot['title'] }} {{ $imot['status'] }} {{ $imot['agent_id'] }}</p>
+        @endforeach
+
+        {!! $links !!}
+
     <section class="content">
       <div class="container-fluid">
         <div class="row">

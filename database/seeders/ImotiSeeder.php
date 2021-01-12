@@ -20,6 +20,7 @@ class ImotiSeeder extends Seeder
                 'text' => "text $i",
                 'price' => $i,
                 'agent_id' => 1,
+                'top' => 0
             ]);
         }
         

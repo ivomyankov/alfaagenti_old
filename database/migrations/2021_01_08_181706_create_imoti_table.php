@@ -22,7 +22,7 @@ class CreateImotiTable extends Migration
             $table->string('phone')->nullable();
             $table->string('owner')->nullable();
             $table->string('notes')->nullable();
-            $table->boolean('top')->nullable();
+            $table->boolean('top')->default(0);
             $table->string('city')->nullable();
             $table->tinyInteger('area_id')->nullable();
             $table->string('type')->nullable();

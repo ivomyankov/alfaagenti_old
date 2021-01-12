@@ -16,9 +16,15 @@ class ImotiModel extends Model
 
     //public $timestamps = false; //By default laravel will expect created_at & updated_at column in your table. By making it to false it will override the default setting.
 
-    /**
-         * Get the comments for the blog post.
-    */
+    public static function imoti($dash, $paginate)
+    {   if($dash=1){
+            $imoti = ImotiModel::paginate($paginate);
+        }else{
+            $imoti = ImotiModel::where('status', '!=', 'Чернова')->where('top' , 0)->paginate($paginate);
+        }     
+        
+        return $imoti;
+    }
 
      public function imot($id)
     {

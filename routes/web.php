@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/', 'App\Http\Controllers\ImotiController@index')->name('home');
+Route::get('/', 'App\Http\Controllers\HomeController@getImoti')->name('home');
 
-Route::get('/dashboard', 'App\Http\Controllers\DashboardController@test')->name('dashboard');
-Route::get('/dashboard/imoti', 'App\Http\Controllers\ImotiController@count')->name('dash-imoti');
+Route::get('/dashboard', 'App\Http\Controllers\DashboardController@test');
+Route::get('/dashboard/imoti', 'App\Http\Controllers\DashboardController@getImoti')->name('dash-imoti');
 Route::get('/dashboard/imot/{id}', 'App\Http\Controllers\ImotiController@imot')->name('dash-imot');
 Route::get('/dashboard/{id}/imoti', 'App\Http\Controllers\ImotiController@agentsImoti')->name('dash-agents-imoti');
 

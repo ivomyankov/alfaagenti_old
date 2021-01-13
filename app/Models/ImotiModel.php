@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ImotiModel extends Model
 {
+    public $paginateDash = 20;
+
     use HasFactory;
     // specify the table, primary key and if not autoincremening make it false
     protected $table = 'imoti';
@@ -16,13 +18,47 @@ class ImotiModel extends Model
 
     //public $timestamps = false; //By default laravel will expect created_at & updated_at column in your table. By making it to false it will override the default setting.
 
+    public function __construct() {
+        
+    }
+    
+    public static function homeImoti($paginate, $visible)
+    {        
+        $active = ImotiModel::where('top', 0)
+                            ->where(function ($query) {
+                                $query->where('status', 'Продажба')
+                                    ->orWhere('status', 'Наем');
+                        })->paginate($paginate, $visible);
+        return $active;
+    }
+
+    public static function topImoti($visible)
+    {        
+        $top = ImotiModel::where('top', 1)
+                            ->where(function ($query) {
+                                $query->where('status', 'Продажба')
+                                    ->orWhere('status', 'Наем');
+                        })->get($visible);
+        return $top;
+    }
+    
     public static function imoti($dash, $paginate)
-    {   if($dash=1){
+    {   if($dash==1){
             $imoti = ImotiModel::paginate($paginate);
         }else{
             $imoti = ImotiModel::where('status', '!=', 'Чернова')->where('top' , 0)->paginate($paginate);
         }     
         
+        return $imoti;
+    }
+
+    public static function dashImoti($agent){ 
+        if($agent == 'admin')
+        {
+            $imoti = ImotiModel::paginate($this->paginateDash);
+        } else { 
+            $imoti = ImotiModel::where('agent_id', $agent)->paginate(20); //dd($imoti);
+        }        
         return $imoti;
     }
 

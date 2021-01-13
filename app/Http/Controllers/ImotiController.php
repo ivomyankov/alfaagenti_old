@@ -23,14 +23,22 @@ class ImotiController extends Controller
         return view('welcome', ['imoti' => $imoti, 'links' => $links->links()]);
     }
 
+    public function dashboardImoti($var)
+    {   
+        $imoti = new ImotiModel;
+        $func = $var['method'];
+        $all = $imoti->$func($var['agent']); 
+        return view('vendor/adminlte/partials/dashboard/imoti', ['imoti' => $all]);
+    }
+
     public function dashboard()
-    {
+    { 
         $data=[
           'var1'=>'something',
           'var2'=>'something',
           'var3'=>'something',
         ];
-        return view('vendor/adminlte/dashboard', ['name' => 'James']);
+        return view('vendor/adminlte/imoti', ['name' => 'James']);
     }
 
     public function count()
@@ -41,10 +49,10 @@ class ImotiController extends Controller
     }
 
     public function agentsImoti($id=0)
-    {
+    {   dd($var);
         $imoti = new ImotiModel;
 
-        dd($imoti->agentsImoti($id));
+        dd($imoti->dashImoti($id));
     }
 
     public function imot($id)

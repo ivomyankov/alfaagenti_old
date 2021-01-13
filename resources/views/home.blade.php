@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content') 
+{{--dd($imoti)--}}
+Total: {{--$imoti->total()--}}
+    TOP:
+    @foreach ($imoti['top'] as $imot)
+      <p>This is imot ID:{{ $imot['id'] }} {{ $imot['title'] }} {{ $imot['status'] }} {{ $imot['agent_id'] }} </p>
+    @endforeach
+    
+
+    All:
+    @foreach ($imoti['imoti'] as $imot)
+      <p>This is imot ID:{{ $imot['id'] }} {{ $imot['title'] }} {{ $imot['status'] }} {{ $imot['agent_id'] }} </p>
+    @endforeach
+
+    {!! $imoti['imoti']->links() !!}
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

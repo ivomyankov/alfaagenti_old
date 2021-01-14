@@ -108,18 +108,19 @@ class ImotiService
                           }
                         });
         }
-  
-        $result = $search->select('imoti.id', 'type', 'price', 'size', 'agent_id', 'status', /*'area.name'*/)
+          
+        $result = $search->select('imoti.id', 'type', 'price', 'size', 'agent_id', 'status', 'area_id')
                         //->join('area', 'area_id', '=', 'area.id')
                         ->with('area')
                         ->with('agent')
                         ->get();
+        //$result = $result->makeHidden($this->forbiden);
         //$count = $result->count();
         //return view('search', compact('result', 'srch', 'count'));
-        return $result;
+        //return $result;
         //return  $search->join('kontakt', 'company.id', '=', 'kontakt.company_id')->with('contacts')->with('conversations')->toSql();
         //return $search->toSql();
-        //dd($result);
+        dd($result);
       } // END search
       
 }

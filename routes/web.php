@@ -16,7 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/', 'App\Http\Controllers\HomeController@getImoti')->name('home');
+Route::get('/', 'App\Http\Controllers\HomeController@getImotiHome')->name('home');
+Route::get('/имоти', 'App\Http\Controllers\HomeController@getImotiImoti')->name('imoti');
+Route::get('/имоти/наем', 'App\Http\Controllers\HomeController@getImotiNaem')->name('naem');
+Route::get('/имоти/продажба', 'App\Http\Controllers\HomeController@getImotiProdajba')->name('prodajba');
+Route::get('/имоти/филтър', 'App\Http\Controllers\HomeController@getImotiFiltar');
 
 Route::get('/dashboard', 'App\Http\Controllers\DashboardController@test');
 Route::get('/dashboard/imoti', 'App\Http\Controllers\DashboardController@getImoti')->name('dash-imoti');

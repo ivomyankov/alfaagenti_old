@@ -16,8 +16,9 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('url')->nullable();
-            $table->tinyInteger('position')->nullable();
+            $table->mediumInteger('imot_id')->unsigned()->nullable();
+            $table->tinyInteger('position')->unsigned()->nullable();
+            $table->string('path', 50)->nullable();
         });
     }
 

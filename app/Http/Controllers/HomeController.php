@@ -13,9 +13,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    private $imoti;
+
+    public function __construct(ImotiService $imoti )
     {
         //$this->middleware('auth');
+        $this->imoti = $imoti;
     }
 
     /**
@@ -24,19 +27,39 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function getImoti(ImotiService $imoti)
+    public function getImotiFiltar()
+    {  
+        return $this->imoti->getImotiFiltar();
+    }
+
+    public function getImotiHome()
+    {  
+        return $this->getImoti($page = 'home');
+    }
+
+    public function getImotiImoti()
+    {  
+        return $this->getImoti($page = 'imoti');
+    }
+
+    public function getImotiNaem()
+    {  
+        return $this->getImoti($page = 'naem');
+    }
+
+    public function getImotiProdajba()
+    {  
+        return $this->getImoti($page = 'prodajba');
+    }
+    
+     public function getImoti($page)
     {
-        if (Auth::user()) {   // Check is user logged in
-            $user = Auth::user();
-        } else {
-            $user = 'guest';
-        }
         // Gets this class name only ( no namespace)
         $class = substr(strrchr(__CLASS__, "\\"), 1);
-        //parametres: This class and loged in user or guest
-        //dd($imoti->getimoti($class, $user));
-        $all = $imoti->getimoti($class, $user);
-        return view('home', ['imoti' => $all]);
+        //Pulls data from ImotiService service container
+        $all = $this->imoti->getimoti($class, $page);
+        //dd($all);
+        return view($page, ['imoti' => $all]);
     }
 
     public function index()

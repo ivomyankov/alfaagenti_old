@@ -9,18 +9,19 @@ use Auth;
 
 class DashboardController extends ImotiController
 {
-    public function __construct()
+    public function __construct(ImotiService $imoti )
     {
         $this->middleware('auth');
-        $this->forbiden = ['address', 'phone', 'owner', 'notes'];
+        $this->imoti = $imoti;        
     }
 
-    public function getImoti(ImotiService $imoti)
+    public function getImoti()
     {   
-        //parametres: This class and loged in user 
-        //dd($imoti->getImoti(Auth::user()));
         // Gets this class name only ( no namespace)
         $class = substr(strrchr(__CLASS__, "\\"), 1);
+        $all = $this->imoti->getimoti($class, $page='dash_imoti');
+
+
         $var = $imoti->getImoti2($class, Auth::user() );
         //return $this->dashboardImoti($var);
 

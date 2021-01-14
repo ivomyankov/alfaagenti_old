@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AreaModel;
+use App\Models\User;
 
 class ImotiModel extends Model
 {
@@ -21,14 +23,33 @@ class ImotiModel extends Model
     public function __construct() {
         
     }
+
+    public function area(){
+        return $this->hasOne(AreaModel::class, 'id', 'area_id');
+    }
+
+    public function agent(){
+        return $this->hasOne(User::class, 'id', 'agent_id');
+    }
     
     public static function homeImoti($paginate, $visible)
+    {     
+        $active = ImotiModel::where('status', 'Продажба')
+                            ->orWhere('status', 'Наем')
+                            ->paginate($paginate, $visible);
+        return $active;
+    }
+    public static function homeImotiProdajba($paginate, $visible)
     {        
-        $active = ImotiModel::where('top', 0)
-                            ->where(function ($query) {
-                                $query->where('status', 'Продажба')
-                                    ->orWhere('status', 'Наем');
-                        })->paginate($paginate, $visible);
+        $active = ImotiModel::where('status', 'Продажба')
+                            ->paginate($paginate, $visible);
+        return $active;
+    }
+
+    public static function homeImotiNaem($paginate, $visible)
+    {        
+        $active = ImotiModel::where('status', 'Наем')
+                            ->paginate($paginate, $visible);
         return $active;
     }
 

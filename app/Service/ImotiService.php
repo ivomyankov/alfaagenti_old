@@ -96,7 +96,7 @@ class ImotiService
         //]);
   
         //$pieces = explode(" ", $data['search']);
-        $dbFields = ['imoti.id', 'type', 'price', 'size', 'agent_id', 'status', 'imoti.area_id'];
+        $dbFields = $this->visibleImoti;
         $pieces = ['3 Стаен', 'продажба'];
   
         $search = ImotiModel::query()  ;
@@ -110,7 +110,6 @@ class ImotiService
         }
           
         $result = $search->select('imoti.id', 'type', 'price', 'size', 'agent_id', 'status', 'area_id')
-                        //->join('area', 'area_id', '=', 'area.id')
                         ->with('area')
                         ->with('agent')
                         ->get();

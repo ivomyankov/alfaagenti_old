@@ -25,7 +25,7 @@
 
     {{-- Menu items --}}
     <ul class="dropdown-menu border-0 shadow">
-        @each('adminlte::partials.navbar.dropdown-item', $item['submenu'], 'item')
+        @each('vendor/adminlte/partials/navbar/dropdown-item', $item['submenu'], 'item')
     </ul>
 
 </li>

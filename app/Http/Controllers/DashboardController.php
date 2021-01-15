@@ -33,7 +33,7 @@ class DashboardController extends ImotiController
 
     public function test()
     {
-        $links = ImotiModel::imoti(1, 2);
+        $links = ImotiModel::imoti(1, 10);
         $imoti = $links->makeHidden($this->forbiden)->toArray();
         //dd($imoti);
         return view('vendor/adminlte/dashboard', ['imoti' => $imoti, 'links' => $links->links()]);

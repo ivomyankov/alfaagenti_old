@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /*
-Route::get('/', function () {
-    return view('welcome');
-});*/
+Route::get('/home', function () {
+    return view('home/home');
+});
+*/
+
 Route::get('/', 'App\Http\Controllers\HomeController@getImotiHome')->name('home');
 Route::get('/имоти', 'App\Http\Controllers\HomeController@getImotiImoti')->name('imoti');
 Route::get('/имоти/наем', 'App\Http\Controllers\HomeController@getImotiNaem')->name('naem');
@@ -31,4 +33,4 @@ Route::get('/dashboard/{id}/imoti', 'App\Http\Controllers\ImotiController@agents
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

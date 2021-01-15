@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     public function getImotiHome()
     {  
-        return $this->getImoti($page = 'home');
+        return $this->getImoti($page = 'home/home');
     }
 
     public function getImotiImoti()
